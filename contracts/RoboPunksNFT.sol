@@ -36,8 +36,8 @@ contract RoboPunks is ERC721, Ownable {
     }
 
     function withdraw() external onlyOwner {
-        (bool success ,) = withdrawWallet.call{value: address(this).balance};
-        require (succes, 'withdraw failed') 
+        (bool success ,) = withdrawWallet.call{value: address(this).balance } ('');
+        require (success, 'withdraw failed') 
     }
 
     function mint(uint256 quantity_) public payable {
@@ -48,6 +48,7 @@ contract RoboPunks is ERC721, Ownable {
 
         for(uint256 i = 0; i < quantity_; i++) {
             uint256 newTokenId = totalSupply + 1;
+            totalSupply++;
         }
     }
 }
